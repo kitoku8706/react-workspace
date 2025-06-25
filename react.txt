@@ -1,0 +1,7 @@
+프로젝트 생성
+
+npx crate-react-app myapp001_demo
+
+
+
+npm start
