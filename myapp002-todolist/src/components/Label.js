@@ -5,13 +5,16 @@ import { todoAction } from '../toolkit/action';
 const Label = ({ todo }) => {
     const dispatch = useDispatch();
     const updateTodo = async (id, completed, todoname) => {
-        await dispatch(todoAction.updateTodo(id, completed, todoname));
-        await dispatch(todoAction.getTodos());
+        // await dispatch(todoAction.updateTodo(id, completed, todoname));
+        // await dispatch(todoAction.getTodos());
+        dispatch(todoAction.updateTodo(id, completed, todoname));
     };
 
     const deleteTodo = async (id) => {
-        await dispatch(todoAction.deleteTodo(id));
-        await dispatch(todoAction.getTodos());
+        console.log('deleteTodo==>', id);
+        // await dispatch(todoAction.deleteTodo(id));
+        // await dispatch(todoAction.getTodos());
+        dispatch(todoAction.deleteTodo(id));
     };
 
     return (

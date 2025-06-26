@@ -1,5 +1,5 @@
 import axios from "axios"
-import { addTodoAction, getTodoAction } from "./todoSlice";
+import { addTodoAction, deleteTodoAction, getTodoAction, updateTodoAction } from "./todoSlice";
 import { retry } from "@reduxjs/toolkit/query";
 
 // axios : ajax의 라이브러리이다.
@@ -38,27 +38,31 @@ function insertTodo(input) {
 
 
 function updateTodo(id, completed, todoname) {
-    return async () => {
-        await axios
+    return async (dispatch) => {
+        const data = await axios
             .put(`/todo`, { id: id, completed: completed, todoname: todoname })
             .then((reponse) => {
-                return reponse.date;
+                return reponse.data;
             })
             .catch((error) => {
                 console.log(error);
             })
+        dispatch(updateTodoAction(data));
     }
 }
 
 function deleteTodo(id) {
-    return async () => {
-        await axios.delete(`/todo/${id}`)
+    console.log("id===>", id);
+    return async (dispatch) => {
+        const data = await axios
+            .delete(`/todo/${id}`)
             .then((response) => {
                 return response.data;
             })
             .catch((error) => {
                 console.log(error);
             })
+        dispatch(deleteTodoAction(data));
     }
 }
 
