@@ -17,12 +17,12 @@ const BoardUpdate = () => {
 
   const getBoardDetail = async () => {
     await instance
-      .get(`/board/view/${num}`)
+      .get(`/board/updateview/${num}`)
       .then((response) => {
         console.log(response.data);
         setBoardDetail(response.data);
       })
-      .catch((error) => console.log("view page 오류", error.message));
+      .catch((error) => console.log("updateview page 오류", error.message));
   };
 
   const handleValueChange = (e) => {

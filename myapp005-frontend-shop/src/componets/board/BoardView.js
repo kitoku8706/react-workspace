@@ -115,19 +115,20 @@ const BoardView = () => {
         답변
       </Link>
 
-      {/* {localStorage.getItem("memberEmail") === boardDetail.memberEmail ? ( */}
-      <>
-        <Link
-          className="btn btn-primary"
-          to={`/board/update/${currentPage}/${num}`}
-        >
-          수정
-        </Link>
-        <button className="btn btn-primary" onClick={handleDelete}>
-          삭제
-        </button>
-      </>
-      {/* ) : null} */}
+      {localStorage.getItem("memberEmail") === boardDetail.memberEmail ||
+      localStorage.getItem("authRole") === "ADMIN" ? (
+        <>
+          <Link
+            className="btn btn-primary"
+            to={`/board/update/${currentPage}/${num}`}
+          >
+            수정
+          </Link>
+          <button className="btn btn-primary" onClick={handleDelete}>
+            삭제
+          </button>
+        </>
+      ) : null}
     </>
   );
 };

@@ -11,7 +11,7 @@ const refreshAccessToken = async () => {
       "/auth/refresh",
       {},
       {
-        baseURL: "http://192.168.0.198:8090",
+        baseURL: "http://localhost:8090",
         headers: {
           "Authorization-refresh": refreshToken,
         },
@@ -28,7 +28,7 @@ const refreshAccessToken = async () => {
 
 // ✅ Axios 인스턴스 생성
 const instance = axios.create({
-  baseURL: "http://192.168.0.198:8090",
+  baseURL: "http://localhost:8090",
   withCredentials: true, // 쿠키 및 인증정보 포함
 });
 

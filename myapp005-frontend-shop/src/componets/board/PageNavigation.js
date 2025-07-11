@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const PageNavigation = ({ pv, getBoardList }) => {
   const pageNumbers = [];
   for (let i = pv.startPage; i <= pv.endPage; i++) {
@@ -21,7 +23,8 @@ const PageNavigation = ({ pv, getBoardList }) => {
           pageNumbers.map((pnum, idx) => {
             return (
               <li key={pnum}>
-                <span
+                <Link
+                  to={`/board/list/${pnum}`}
                   onClick={() => getBoardList(pnum)}
                   className={
                     pv.currentPage === pnum
@@ -29,10 +32,8 @@ const PageNavigation = ({ pv, getBoardList }) => {
                       : "page-link"
                   }
                 >
-                  {/* <Link to={`/board/list/${pnum}`} className="page-link"> */}
                   {pnum}
-                  {/* </Link> */}
-                </span>
+                </Link>
               </li>
             );
           })}

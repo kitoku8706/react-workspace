@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
+import { useAuth } from "./AuthProvider";
 
 const activeStyle = ({ isActive }) => ({
   color: isActive ? "green" : "",
@@ -7,6 +8,7 @@ const activeStyle = ({ isActive }) => ({
 });
 
 const BaseLayout = () => {
+  const { isAuthenticated } = useAuth();
   return (
     <div>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -17,7 +19,7 @@ const BaseLayout = () => {
                 홈
               </NavLink>
             </li>
-            {localStorage.getItem("memberEmail") == null ? (
+            {!isAuthenticated ? (
               <>
                 <li className="nav-item">
                   <NavLink style={activeStyle} className="nav-link" to="/login">
@@ -74,7 +76,7 @@ const BaseLayout = () => {
               <NavLink
                 style={activeStyle}
                 className="nav-link"
-                to="/board/list/1"
+                to="/board/list/"
               >
                 게시판
               </NavLink>
